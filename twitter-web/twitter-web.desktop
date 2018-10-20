@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=twitter web
+Exec=webapp-container  --user-agent-string="Mozilla/5.0 (Linux; Android 8.0; Pixel) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.2125.102 Mobile Safari/537.36" --webappUrlPatterns=https?://twitter.com/* https://twitter.com
+Icon=logo.svg
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true

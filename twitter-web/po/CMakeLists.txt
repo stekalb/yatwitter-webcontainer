@@ -1,7 +1,7 @@
 include(FindGettext)
 find_program(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
 
-set(DOMAIN "sailbook.sailbook")
+set(DOMAIN "twitter-web.ste-kal")
 set(POT_FILE ${DOMAIN}.pot)
 file(GLOB PO_FILES *.po)
 
@@ -17,8 +17,8 @@ add_custom_target(${POT_FILE} ALL
         --from-code=UTF-8
         --c++ --qt --language=javascript --add-comments=TRANSLATORS
         --keyword=tr --keyword=tr:1,2 --keyword=N_ --keyword=_
-        --package-name='Sailbook'
-        --copyright-holder='Rudi Timmermans'
+        --package-name='twitter-web'
+        --copyright-holder='Stefan Kalb'
         ${I18N_SRC_FILES}
     COMMAND ${CMAKE_COMMAND} -E copy ${POT_FILE} ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -33,4 +33,3 @@ foreach(PO_FILE ${PO_FILES})
             DESTINATION ${INSTALL_DIR}
             RENAME ${DOMAIN}.mo)
 endforeach(PO_FILE)
-

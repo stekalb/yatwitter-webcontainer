@@ -1,11 +1,15 @@
 {
     "policy_groups": [
-         "webview",
-         "networking",
-         "audio",
-         "video",
-         "content_exchange",
-         "content_exchange_source"
+        "networking",
+        "accounts",
+        "audio",
+        "content_exchange",
+        "location",
+        "camera",
+        "microphone",
+        "push-notification-client",
+        "keep-display-on",
+        "webview"
     ],
     "policy_version": 16.04
 }

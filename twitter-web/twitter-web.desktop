@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=twitter-web
-Exec=qmlscene %u qml/main.qml --disable-gpu
+Exec=qmlscene %u qml/main.qml --scaling --disable-gpu
 Icon=img/logo.svg
 Terminal=false
 Type=Application

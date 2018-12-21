@@ -8,6 +8,7 @@ import Ubuntu.UnityWebApps 0.1 as UnityWebApps
 import Ubuntu.Content 1.1
 import QtMultimedia 5.8
 import QtSystemInfo 5.0
+import Qt.labs.settings 1.0
 import "components"
 import "actions" as Actions
 import "."
@@ -32,6 +33,8 @@ MainView {
   property bool popupBlockerEnabled: true
   property bool fullscreen: false
 
+  property var myScreenPixelDensity: Screen.pixelDensity
+
   Page {
     id: page
     header: Rectangle {
@@ -54,10 +57,13 @@ MainView {
       settings.fullScreenSupportEnabled: false
       property string myTabletUrl: "https://twitter.com"
       property string myMobileUrl: "https://m.twitter.com"
-      property string myUrl: (Screen.devicePixelRatio == 1.625) ? myTabletUrl : myMobileUrl
+      property string myUrl: (Screen.pixelDensity == 8.88888888888889) ? myTabletUrl : myMobileUrl
 
       property string test: writeToLog("DEBUG","my URL:", myUrl);
-      property string test2: writeToLog("DEBUG","PixelRatio:", Screen.devicePixelRatio);
+      property string test2: writeToLog("DEBUG","DevicePixelRatio:", Screen.devicePixelRatio);
+      property string test3: writeToLog("DEBUG","PixelDensity:", myScreenPixelDensity);
+      property string test4: writeToLog("DEBUG","Screen model:", Screen.model);
+      property string test5: writeToLog("DEBUG","Screen manufacturer:", Screen.manufacturer);
 
       function writeToLog(mylevel,mytext, mymessage){
         console.log("["+mylevel+"]  "+mytext+" "+mymessage)
@@ -71,7 +77,7 @@ MainView {
         property alias dataPath: webContext.persistentStoragePath
         property string myTabletUA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/67.0.3396.99 Chrome/67.0.3396.99 Safari/537.36"
         property string myMobileUA: "Mozilla/5.0 (Linux; Android 8.0.0; Pixel Build/OPR3.170623.007) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36"
-        property string myUA: (Screen.devicePixelRatio == 1.625) ? myTabletUA : myMobileUA
+        property string myUA: (Screen.pixelDensity == 8.88888888888889) ? myTabletUA : myMobileUA
         property string test: console.log("[DEBUG] myUA "+myUA)
 
         dataPath: dataLocation
@@ -89,44 +95,48 @@ MainView {
         bottomMargin: units.gu(4)
       }
 
-      zoomFactor: 2.5
+      property var myFriezaZOOM: 1.5
+      property var myMobileZOOM: 2.5
+      property var myZOOM: (Screen.pixelDensity == 8.88888888888889) ? myFriezaZOOM : myMobileZOOM
+      property string test6: writeToLog("DEBUG","my Zoom:", myZOOM);
+      zoomFactor: myZOOM
       url: myUrl
 
       onJavaScriptDialogRequested: function(request) {
 
-      switch (request.type){
-        case JavaScriptDialogRequest.DialogTypeAlert:
-          request.accepted = true;
-          var alertDialog = PopupUtils.open(Qt.resolvedUrl("AlertDialog.qml"));
-          alertDialog.message = request.message;
-          alertDialog.accept.connect(request.dialogAccept);
-          break;
+        switch (request.type){
+          case JavaScriptDialogRequest.DialogTypeAlert:
+            request.accepted = true;
+            var alertDialog = PopupUtils.open(Qt.resolvedUrl("AlertDialog.qml"));
+            alertDialog.message = request.message;
+            alertDialog.accept.connect(request.dialogAccept);
+            break;
 
-        case JavaScriptDialogRequest.DialogTypeConfirm:
-          request.accepted = true;
-          var confirmDialog = PopupUtils.open(Qt.resolvedUrl("ConfirmDialog.qml"));
-          confirmDialog.message = request.message;
-          confirmDialog.accept.connect(request.dialogAccept);
-          confirmDialog.reject.connect(request.dialogReject);
-          break;
+          case JavaScriptDialogRequest.DialogTypeConfirm:
+            request.accepted = true;
+            var confirmDialog = PopupUtils.open(Qt.resolvedUrl("ConfirmDialog.qml"));
+            confirmDialog.message = request.message;
+            confirmDialog.accept.connect(request.dialogAccept);
+            confirmDialog.reject.connect(request.dialogReject);
+            break;
 
-        case JavaScriptDialogRequest.DialogTypePrompt:
-          request.accepted = true;
-          var promptDialog = PopupUtils.open(Qt.resolvedUrl("PromptDialog.qml"));
-          promptDialog.message = request.message;
-          promptDialog.defaultValue = request.defaultText;
-          promptDialog.accept.connect(request.dialogAccept);
-          promptDialog.reject.connect(request.dialogReject);
-          break;
+          case JavaScriptDialogRequest.DialogTypePrompt:
+            request.accepted = true;
+            var promptDialog = PopupUtils.open(Qt.resolvedUrl("PromptDialog.qml"));
+            promptDialog.message = request.message;
+            promptDialog.defaultValue = request.defaultText;
+            promptDialog.accept.connect(request.dialogAccept);
+            promptDialog.reject.connect(request.dialogReject);
+            break;
 
-        case 3:
-          request.accepted = true;
-          var beforeUnloadDialog = PopupUtils.open(Qt.resolvedUrl("BeforeUnloadDialog.qml"));
-          beforeUnloadDialog.message = request.message;
-          beforeUnloadDialog.accept.connect(request.dialogAccept);
-          beforeUnloadDialog.reject.connect(request.dialogReject);
-          break;
-      }
+          case 3:
+            request.accepted = true;
+            var beforeUnloadDialog = PopupUtils.open(Qt.resolvedUrl("BeforeUnloadDialog.qml"));
+            beforeUnloadDialog.message = request.message;
+            beforeUnloadDialog.accept.connect(request.dialogAccept);
+            beforeUnloadDialog.reject.connect(request.dialogReject);
+            break;
+        }
 
       }
 

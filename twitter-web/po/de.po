@@ -12,10 +12,36 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: ../qml/SadPage.qml:27
+msgid "Oops, something went wrong."
+msgstr "Uups, etwas ist schief gelaufen."
+
+#: ../qml/SadPage.qml:33
+msgid "Reload"
+msgstr "Aktualisieren"
+
+#: ../qml/ContentDownloadDialog.qml:63
+msgid ""
+"Choose an application to open this file or add it to the downloads folder."
+msgstr ""
+"Applikationzum Öffnen der Datei wählen oder zum Downloads-Verzeichnis hinzufügen."
+
+#: ../qml/ContentDownloadDialog.qml:69
+msgid "Choose an application"
+msgstr "Eine Applikation auswählen"
+
+#: ../qml/ContentDownloadDialog.qml:82
+msgid "Download"
+msgstr "Download"
+
+#: ../qml/ContentDownloadDialog.qml:94
+msgid "Cancel"
+msgstr "Abbrechen"
 
 #: ../qml/actions/CopyImage.qml:22
 msgid "Copy image"

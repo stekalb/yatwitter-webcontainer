@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: twitter-web\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-21 20:46+0000\n"
+"POT-Creation-Date: 2019-11-03 09:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,24 +42,24 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../qml/actions/ShareLink.qml:22
-msgid "Share…"
+#: ../qml/actions/Copy.qml:22
+msgid "Copy"
 msgstr ""
 
 #: ../qml/actions/CopyLink.qml:22
 msgid "Copy link"
 msgstr ""
 
-#: ../qml/actions/CopyImage.qml:22
-msgid "Copy image"
-msgstr ""
-
 #: ../qml/actions/SaveImage.qml:22
 msgid "Save image"
 msgstr ""
 
-#: ../qml/actions/Copy.qml:22
-msgid "Copy"
+#: ../qml/actions/CopyImage.qml:22
+msgid "Copy image"
+msgstr ""
+
+#: ../qml/actions/ShareLink.qml:22
+msgid "Share…"
 msgstr ""
 
 #: ../qml/MediaAccessDialog.qml:31

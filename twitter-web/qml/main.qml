@@ -53,17 +53,19 @@ MainView {
       id: webview
 
       property var currentWebview: webview
-
+      property var myTabletPixelDensity: 8.88888888888889
+      property var myTabletPixelDensityB: 9.88888888888889
+      property var myTabletPixelDensityC: 9.48931735278791
       settings.fullScreenSupportEnabled: false
       property string myTabletUrl: "https://twitter.com"
       property string myMobileUrl: "https://m.twitter.com"
-      property string myUrl: (Screen.pixelDensity == 8.88888888888889) ? myTabletUrl : myMobileUrl
+      property string myUrl: (Screen.pixelDensity == myTabletPixelDensity || Screen.pixelDensity == myTabletPixelDensityB) ? myTabletUrl : myMobileUrl
 
-      property string test: writeToLog("DEBUG","my URL:", myUrl);
-      property string test2: writeToLog("DEBUG","DevicePixelRatio:", Screen.devicePixelRatio);
-      property string test3: writeToLog("DEBUG","PixelDensity:", myScreenPixelDensity);
-      property string test4: writeToLog("DEBUG","Screen model:", Screen.model);
-      property string test5: writeToLog("DEBUG","Screen manufacturer:", Screen.manufacturer);
+      property string test: writeToLog("DEBUG","A: my URL:", myUrl);
+      property string test2: writeToLog("DEBUG","B: DevicePixelRatio:", Screen.devicePixelRatio);
+      property string test3: writeToLog("DEBUG","C: PixelDensity:", myScreenPixelDensity);
+      property string test4: writeToLog("DEBUG","D: Screen model:", Screen.model);
+      property string test5: writeToLog("DEBUG","E: Screen manufacturer:", Screen.manufacturer);
 
       function writeToLog(mylevel,mytext, mymessage){
         console.log("["+mylevel+"]  "+mytext+" "+mymessage)
@@ -73,12 +75,14 @@ MainView {
       WebEngineProfile {
         id: webContext
 
+        property var myTabletPixelDensity: 8.88888888888889
+        property var myTabletPixelDensityB: 9.88888888888889
         property alias userAgent: webContext.httpUserAgent
         property alias dataPath: webContext.persistentStoragePath
         property string myTabletUA: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/67.0.3396.99 Chrome/67.0.3396.99 Safari/537.36"
-        property string myMobileUA: "Mozilla/5.0 (Linux; Android 8.0.0; Pixel Build/OPR3.170623.007) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.98 Mobile Safari/537.36"
-        property string myUA: (Screen.pixelDensity == 8.88888888888889) ? myTabletUA : myMobileUA
-        property string test: console.log("[DEBUG] myUA "+myUA)
+        property string myMobileUA: "Mozilla/5.0 (Linux; U; Android 4.1.1; es-; AVA-V470 Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1"
+        property string myUA: (Screen.pixelDensity == myTabletPixelDensity || Screen.pixelDensity == myTabletPixelDensityB) ? myTabletUA : myMobileUA
+        property string test: console.log("[DEBUG] Conole: myUA "+myUA)
 
         dataPath: dataLocation
 
@@ -97,8 +101,8 @@ MainView {
 
       property var myFriezaZOOM: 1.5
       property var myMobileZOOM: 2.5
-      property var myZOOM: (Screen.pixelDensity == 8.88888888888889) ? myFriezaZOOM : myMobileZOOM
-      property string test6: writeToLog("DEBUG","my Zoom:", myZOOM);
+      property var myZOOM: (Screen.pixelDensity == myTabletPixelDensity || Screen.pixelDensity == myTabletPixelDensityB || Screen.pixelDensity == myTabletPixelDensityC) ? myFriezaZOOM : myMobileZOOM
+      property string test6: writeToLog("DEBUG","F: my Zoom:", myZOOM);
       zoomFactor: myZOOM
       url: myUrl
 

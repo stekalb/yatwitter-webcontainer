@@ -35,6 +35,10 @@ MainView {
 
   property var myScreenPixelDensity: Screen.pixelDensity
 
+    property var settings: Settings {
+        property bool useInternalBrowser: false
+        }
+
   Page {
     id: page
     header: Rectangle {
@@ -99,11 +103,17 @@ MainView {
         bottomMargin: units.gu(4)
       }
 
-      property var myFriezaZOOM: 1.5
-      property var myMobileZOOM: 2.5
-      property var myZOOM: (Screen.pixelDensity == myTabletPixelDensity || Screen.pixelDensity == myTabletPixelDensityB || Screen.pixelDensity == myTabletPixelDensityC) ? myFriezaZOOM : myMobileZOOM
-      property string test6: writeToLog("DEBUG","F: my Zoom:", myZOOM);
-      zoomFactor: myZOOM
+      property var myFriezaZOOM: 1.75
+      property var myMobileZOOM: 2.25
+      property var myZoom: (Screen.pixelDensity == myTabletPixelDensity || Screen.pixelDensity == myTabletPixelDensityB || Screen.pixelDensity == myTabletPixelDensityC) ? myFriezaZOOM : myMobileZOOM
+      property string test6: writeToLog("DEBUG","F: my Zoom:", myZoom);
+      
+
+    // Workaround for not correctly working zoom
+    onLoadingChanged: {
+      zoomFactor = myZoom
+    }
+
       url: myUrl
 
       onJavaScriptDialogRequested: function(request) {

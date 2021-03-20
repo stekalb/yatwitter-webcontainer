@@ -1,7 +1,7 @@
 {
     "name": "twitter-web.ste-kal",
     "description": "Yet Another unofficial Twitter client for Ubuntu Touch OS",
-    "architecture": "armhf",
+    "architecture": "all",
     "title": "twitter web",
     "hooks": {
         "twitter-web": {
@@ -9,7 +9,7 @@
             "desktop": "twitter-web.desktop"
         }
     },
-    "version": "2.1.4",
+    "version": "2.1.5",
     "maintainer": "Stefan Kalb <stefan.kalb@gmx.ch>",
-    "framework" : "ubuntu-sdk-16.04"
+    "framework": "ubuntu-sdk-16.04.4"
 }
